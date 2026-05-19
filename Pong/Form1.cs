@@ -13,7 +13,7 @@ using System.Windows.Forms;
 namespace Pong {
     public partial class Form1 : Form {
         Graphics mobjGraphics;
-        //const Fps = 60
+        const int fps = 60;
 
 
         //Constructor
@@ -26,7 +26,7 @@ namespace Pong {
             mobjGraphics = pbCanvas.CreateGraphics();
 
             //start timer
-            tmrRender.Interval = 1000;
+            tmrRender.Interval = Math.Pow(fps, -1)*1000;
             tmrRender.Enabled = true;
         }
 
