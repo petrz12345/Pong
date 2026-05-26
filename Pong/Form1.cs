@@ -13,7 +13,12 @@ using System.Windows.Forms;
 namespace Pong {
     public partial class Form1 : Form {
         Graphics mobjGraphics;
-        const int fps = 60;
+        const int fps = 600;
+
+        //ball values
+        int mintCoordinatesX, mintCoordinatesY, mintMoveX, mintMoveY, cnSize = 20;
+
+
 
 
         //Constructor
@@ -26,13 +31,32 @@ namespace Pong {
             mobjGraphics = pbCanvas.CreateGraphics();
 
             //start timer
-            tmrRender.Interval = Math.Pow(fps, -1)*1000;
+            tmrRender.Interval = 1000/fps;
+            //tmrRender.Interval = 100;
             tmrRender.Enabled = true;
+            mintCoordinatesX = mintCoordinatesY = 100;
+            mintMoveX = mintMoveY = 10;
+
         }
 
         private void tmrRender_Tick(object sender, EventArgs e) {
+            //delete ball
+            mobjGraphics.FillEllipse(Brushes.White, mintCoordinatesX, mintCoordinatesY, cnSize, cnSize);
+
+
+            //move ball
+            mintCoordinatesX += mintMoveX; mintCoordinatesY += mintMoveY;
+            //bounce
+            if ((mintCoordinatesY > pbCanvas.Height - cnSize) || (mintCoordinatesY < 0)) {
+                mintMoveY = mintMoveY * -1;
+            }
+            if ((mintCoordinatesX > pbCanvas.Width - cnSize) || (mintCoordinatesX < 0))
+            {
+                mintMoveX = mintMoveX * -1;
+            }
+
             //draw ball
-            mobjGraphics.FillEllipse(Brushes.Blue, 100, 100, 20, 20);
+            mobjGraphics.FillEllipse(Brushes.Blue, mintCoordinatesX, mintCoordinatesY, cnSize, cnSize);
         }
     }
 }
