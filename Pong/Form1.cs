@@ -33,7 +33,7 @@ namespace Pong {
             mobjGraphics = pbCanvas.CreateGraphics();
 
             //create ball
-            mobjBall = new() ;
+            mobjBall = new clsBall();
 
             //start timer
             tmrRender.Interval = 1000/fps;
@@ -46,7 +46,7 @@ namespace Pong {
 
         private void tmrRender_Tick(object sender, EventArgs e) {
             //render ball
-
+            mobjBall.Render();
             
             
             //delete ball
