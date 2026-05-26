@@ -15,6 +15,8 @@ namespace Pong {
         Graphics mobjGraphics;
         const int fps = 600;
 
+        clsBall mobjBall;
+
         //ball values
         int mintCoordinatesX, mintCoordinatesY, mintMoveX, mintMoveY, cnSize = 20;
 
@@ -30,6 +32,9 @@ namespace Pong {
         private void pbCanvas_Click(object sender, EventArgs e) {
             mobjGraphics = pbCanvas.CreateGraphics();
 
+            //create ball
+            mobjBall = new() ;
+
             //start timer
             tmrRender.Interval = 1000/fps;
             //tmrRender.Interval = 100;
@@ -40,6 +45,10 @@ namespace Pong {
         }
 
         private void tmrRender_Tick(object sender, EventArgs e) {
+            //render ball
+
+            
+            
             //delete ball
             mobjGraphics.FillEllipse(Brushes.White, mintCoordinatesX, mintCoordinatesY, cnSize, cnSize);
 
