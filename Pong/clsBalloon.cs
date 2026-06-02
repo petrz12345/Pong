@@ -7,15 +7,17 @@ using System.Threading.Tasks;
 
 namespace Pong
 {
-    internal class clsBall {
+    internal class clsBalloon
+    {
         Graphics mobjGraphics;
 
         int mintCoordinatesX, mintCoordinatesY, mintMoveX, mintMoveY;
         const int cnSize = 20;
 
 
-        //constructor
-        public clsBall(Graphics objGraphics, int intX,int intY) {
+
+        public clsBalloon(Graphics objGraphics, int intX, int intY)
+        {
 
             mobjGraphics = objGraphics;
 
@@ -26,10 +28,9 @@ namespace Pong
             mintCoordinatesY = intY;
 
         }
-
         public void Render() {
             //delete ball
-            mobjGraphics.FillEllipse(Brushes.White, mintCoordinatesX, mintCoordinatesY, cnSize, cnSize);
+            mobjGraphics.DrawEllipse(Pens.White, mintCoordinatesX, mintCoordinatesY, cnSize, cnSize);
 
             //move ball
             mintCoordinatesX += mintMoveX; mintCoordinatesY += mintMoveY;
@@ -39,15 +40,15 @@ namespace Pong
             {
                 mintMoveY = mintMoveY * -1;
             }
-            if ((mintCoordinatesX > mobjGraphics.VisibleClipBounds.Width - cnSize) || (mintCoordinatesX < 0))
+            if ((mintCoordinatesX > mobjGraphics.VisibleClipBounds.Height - cnSize) || (mintCoordinatesX < 0))
             {
                 mintMoveX = mintMoveX * -1;
             }
             //draw ball
-            mobjGraphics.FillEllipse(Brushes.Blue, mintCoordinatesX, mintCoordinatesY, cnSize, cnSize);
+            mobjGraphics.DrawEllipse(Pens.Red, mintCoordinatesX, mintCoordinatesY, cnSize, cnSize);
 
-        }
 
+            }
 
 
     }

@@ -14,11 +14,10 @@ namespace Pong {
     public partial class Form1 : Form {
         Graphics mobjGraphics;
         const int fps = 600;
-
+        const int cnBalloonCount = 5;
         clsBall mobjBall;
 
-        //ball values
-        int mintCoordinatesX, mintCoordinatesY, mintMoveX, mintMoveY, cnSize = 20;
+
 
         //Constructor
         public Form1() {
@@ -30,34 +29,39 @@ namespace Pong {
             mobjGraphics = pbCanvas.CreateGraphics();
 
             //create ball
-            mobjBall = new clsBall();
+            mobjBall = new clsBall(mobjGraphics, 100, 100);
 
+            //create balloons
+            mobjBalloon = new clsBalloon[cnBalloonCount];
+
+
+            lintX = lintY = 10;
+
+            for (int i = 0; i < cnBalloonCount; i++)
+            {
+                mobjBalloon[i] = new clsBalloon(mobjGraphics, 10, 10);
+                //move X
+                lintX = lintX + 60;
+                //line overflow protection
+                if (lintX + 60 > pbCanvas.Width) {
+                    lintX = 10;
+                    lintY = lintY + 60;
+                }
+
+            }
             //start timer
             tmrRender.Interval = 1000/fps;
             //tmrRender.Interval = 100;
             tmrRender.Enabled = true;
-            mintCoordinatesX = mintCoordinatesY = 100;
-            mintMoveX = mintMoveY = 10;
         }
         private void tmrRender_Tick(object sender, EventArgs e) {
-            //render ball
+            //render balls
             mobjBall.Render();
-            
-            //delete ball
-            mobjGraphics.FillEllipse(Brushes.White, mintCoordinatesX, mintCoordinatesY, cnSize, cnSize);
+            mobjBalloon.Render();
 
-            //move ball
-            mintCoordinatesX += mintMoveX; mintCoordinatesY += mintMoveY;
-
-            //bounce
-            if ((mintCoordinatesY > pbCanvas.Height - cnSize) || (mintCoordinatesY < 0)) {
-                mintMoveY = mintMoveY * -1; 
+            for (int i = 0; i < cnBalloonCount; i++)
+            {
+                mobjBalloon[i].Render();
             }
-            if ((mintCoordinatesX > pbCanvas.Width - cnSize) || (mintCoordinatesX < 0)) {
-                mintMoveX = mintMoveX * -1; 
-            }
-            //draw ball
-            mobjGraphics.FillEllipse(Brushes.Blue, mintCoordinatesX, mintCoordinatesY, cnSize, cnSize);
-        }
     }
 }
