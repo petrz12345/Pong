@@ -13,6 +13,7 @@ namespace Pong
 
         int mintCoordinatesX, mintCoordinatesY, mintMoveX, mintMoveY;
         const int cnSize = 20;
+        bool mblVisible; 
 
 
 
@@ -26,6 +27,7 @@ namespace Pong
 
             mintCoordinatesX = intX;
             mintCoordinatesY = intY;
+            mblVisible = true;
 
         }
         public void Render() {
@@ -46,9 +48,39 @@ namespace Pong
             }
             //draw ball
             mobjGraphics.DrawEllipse(Pens.Red, mintCoordinatesX, mintCoordinatesY, cnSize, cnSize);
+        }
+        //Collision detection
+        public void Collision(int intX,  int intY, int intBallSize, int intBalloonSize) { 
+            int lintBallCenterX, lintBallCenterY, lintBalloonCenterX, lintBalloonCenterY;
+            double ldblDistance, ldblRadiuses;
+                    
+            //ball center
+            lintBallCenterX = intX + intBallSize / 2;
+            lintBallCenterY = intY + intBallSize / 2;
+
+            //balloon center
+            lintBalloonCenterX = intX + intBalloonSize / 2;
+            lintBalloonCenterY = intY + intBalloonSize / 2;
+
+
+            //add radiuses
+            ldblRadiuses = intBallSize / 2 + cnSize / 2;
+
+            //distance
+            ldblDistance = Math.Sqrt(Math.Pow(lintBallCenterX - lintBalloonCenterX, 2) + Math.Pow(lintBallCenterY - lintBalloonCenterY, 2));
+
+
+            if (ldblDistance < ldblRadiuses) {
+                mblVisible = false; 
 
 
             }
+
+
+
+            }
+
+
 
 
     }

@@ -16,6 +16,7 @@ namespace Pong {
         const int fps = 600;
         const int cnBalloonCount = 5;
         clsBall mobjBall;
+        clsBalloon mobjBalloon;
 
 
 
@@ -33,7 +34,6 @@ namespace Pong {
 
             //create balloons
             mobjBalloon = new clsBalloon[cnBalloonCount];
-
 
             lintX = lintY = 10;
 
