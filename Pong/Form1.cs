@@ -59,7 +59,6 @@ namespace Pong {
         private void tmrRender_Tick(object sender, EventArgs e) {
             //render balls
             mobjBall.Render();
-            mobjBalloon[cnBalloonCount].Render();
 
             for (int i = 0; i < cnBalloonCount; i++)
             {
