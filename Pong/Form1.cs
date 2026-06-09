@@ -14,7 +14,7 @@ namespace Pong {
     public partial class Form1 : Form {
         Graphics mobjGraphics;
         const int fps = 600;
-        const int cnBalloonCount = 5;
+        const int cnBalloonCount = 10;
         clsBall mobjBall;
         clsBalloon[] mobjBalloon;
 
@@ -62,7 +62,7 @@ namespace Pong {
 
             for (int i = 0; i < cnBalloonCount; i++)
             {
-                mobjBalloon[i].Render();
+                mobjBalloon[i].Render(i);
             }
         }
     } 

@@ -30,20 +30,18 @@ namespace Pong
             mblVisible = true;
 
         }
-        public void Render() {
+        public void Render(int i) {
 
             if (mblVisible == true) {
                 //draw balloon
-                mobjGraphics.DrawEllipse(Pens.Red, mintCoordinatesX, mintCoordinatesY, cnSize, cnSize);
+                mobjGraphics.DrawEllipse(Pens.Red, mintCoordinatesX + i * cnSize, mintCoordinatesY, cnSize, cnSize);
 
             }
             else
             {
                 //delete balloon
-                mobjGraphics.DrawEllipse(Pens.White, mintCoordinatesX, mintCoordinatesY, cnSize, cnSize);
+                mobjGraphics.DrawEllipse(Pens.White, mintCoordinatesX + i * cnSize, mintCoordinatesY, cnSize, cnSize);
             }
-            //draw balloon
-            mobjGraphics.DrawEllipse(Pens.Red, mintCoordinatesX, mintCoordinatesY, cnSize, cnSize);
 
 
         }

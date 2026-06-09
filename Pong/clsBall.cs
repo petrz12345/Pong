@@ -21,7 +21,7 @@ namespace Pong
             mobjGraphics = objGraphics;
 
             mintCoordinatesX = mintCoordinatesY = 100;
-            mintMoveX = mintMoveY = 10;
+            mintMoveX = mintMoveY = 3;
 
             mintCoordinatesX = intX;
             mintCoordinatesY = intY;
