@@ -10,7 +10,8 @@ namespace Pong
     internal class clsBall {
         Graphics mobjGraphics;
 
-        int mintCoordinatesX, mintCoordinatesY, mintMoveX, mintMoveY;
+        public int mintCoordinatesX, mintCoordinatesY;
+        int mintMoveX, mintMoveY;
         const int cnSize = 20;
 
 

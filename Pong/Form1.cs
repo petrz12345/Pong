@@ -16,7 +16,7 @@ namespace Pong {
         const int fps = 600;
         const int cnBalloonCount = 5;
         clsBall mobjBall;
-        clsBalloon mobjBalloon;
+        clsBalloon[] mobjBalloon;
 
 
 
@@ -35,6 +35,8 @@ namespace Pong {
             //create balloons
             mobjBalloon = new clsBalloon[cnBalloonCount];
 
+
+            int lintX, lintY;
             lintX = lintY = 10;
 
             for (int i = 0; i < cnBalloonCount; i++)
@@ -50,18 +52,19 @@ namespace Pong {
 
             }
             //start timer
-            tmrRender.Interval = 1000/fps;
+            tmrRender.Interval = 1000 / fps;
             //tmrRender.Interval = 100;
             tmrRender.Enabled = true;
         }
         private void tmrRender_Tick(object sender, EventArgs e) {
             //render balls
             mobjBall.Render();
-            mobjBalloon.Render();
+            mobjBalloon[cnBalloonCount].Render();
 
             for (int i = 0; i < cnBalloonCount; i++)
             {
                 mobjBalloon[i].Render();
             }
-    }
+        }
+    } 
 }

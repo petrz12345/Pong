@@ -31,24 +31,34 @@ namespace Pong
 
         }
         public void Render() {
-            //delete ball
-            mobjGraphics.DrawEllipse(Pens.White, mintCoordinatesX, mintCoordinatesY, cnSize, cnSize);
 
-            //move ball
-            mintCoordinatesX += mintMoveX; mintCoordinatesY += mintMoveY;
+            if (mblVisible == true) { 
+                //delete balloon
+                mobjGraphics.DrawEllipse(Pens.White, mintCoordinatesX, mintCoordinatesY, cnSize, cnSize);
 
-            //bounce
-            if ((mintCoordinatesY > mobjGraphics.VisibleClipBounds.Height - cnSize) || (mintCoordinatesY < 0))
-            {
+                //move balloon
+                mintCoordinatesX += mintMoveX; mintCoordinatesY += mintMoveY;
+
+                //bounce
+                if ((mintCoordinatesY > mobjGraphics.VisibleClipBounds.Height - cnSize) || (mintCoordinatesY < 0)) {
                 mintMoveY = mintMoveY * -1;
+                }
+                if ((mintCoordinatesX > mobjGraphics.VisibleClipBounds.Height - cnSize) || (mintCoordinatesX < 0)) {
+                    mintMoveX = mintMoveX * -1;
+                }
             }
-            if ((mintCoordinatesX > mobjGraphics.VisibleClipBounds.Height - cnSize) || (mintCoordinatesX < 0))
+            else
             {
-                mintMoveX = mintMoveX * -1;
+                //delete balloon
+                mobjGraphics.DrawEllipse(Pens.White, mintCoordinatesX, mintCoordinatesY, cnSize, cnSize);
             }
-            //draw ball
+            //draw balloon
             mobjGraphics.DrawEllipse(Pens.Red, mintCoordinatesX, mintCoordinatesY, cnSize, cnSize);
+
+
         }
+            
+        
         //Collision detection
         public void Collision(int intX,  int intY, int intBallSize, int intBalloonSize) { 
             int lintBallCenterX, lintBallCenterY, lintBalloonCenterX, lintBalloonCenterY;
@@ -72,16 +82,9 @@ namespace Pong
 
             if (ldblDistance < ldblRadiuses) {
                 mblVisible = false; 
-
-
             }
 
-
-
-            }
-
-
-
-
+            
+        }
     }
 }
