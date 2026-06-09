@@ -41,7 +41,7 @@ namespace Pong {
 
             for (int i = 0; i < cnBalloonCount; i++)
             {
-                mobjBalloon[i] = new clsBalloon(mobjGraphics, 10, 10);
+                mobjBalloon[i] = new clsBalloon(mobjGraphics, lintX, lintY);
                 //move X
                 lintX = lintX + 60;
                 //line overflow protection

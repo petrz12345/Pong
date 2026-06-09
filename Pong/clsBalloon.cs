@@ -30,35 +30,22 @@ namespace Pong
             mblVisible = true;
 
         }
-        public void Render(int i) {
-
-            if (mblVisible == true) {
-                //draw balloon
-                mobjGraphics.DrawEllipse(Pens.Red, mintCoordinatesX + i * cnSize, mintCoordinatesY, cnSize, cnSize);
-
-            }
-            else
-            {
-                //delete balloon
-                mobjGraphics.DrawEllipse(Pens.White, mintCoordinatesX + i * cnSize, mintCoordinatesY, cnSize, cnSize);
-            }
 
 
-        }
-            
-        
+
         //Collision detection
-        public void Collision(int intX,  int intY, int intBallSize, int intBalloonSize) { 
+        public void Collision(int intX, int intY, int intBallSize, int intBalloonSize)
+        {
             int lintBallCenterX, lintBallCenterY, lintBalloonCenterX, lintBalloonCenterY;
             double ldblDistance, ldblRadiuses;
-                    
+
             //ball center
             lintBallCenterX = intX + intBallSize / 2;
             lintBallCenterY = intY + intBallSize / 2;
 
             //balloon center
-            lintBalloonCenterX = intX + intBalloonSize / 2;
-            lintBalloonCenterY = intY + intBalloonSize / 2;
+            lintBalloonCenterX = mintCoordinatesX + intBalloonSize / 2;
+            lintBalloonCenterY = mintCoordinatesY + intBalloonSize / 2;
 
 
             //add radiuses
@@ -68,11 +55,26 @@ namespace Pong
             ldblDistance = Math.Sqrt(Math.Pow(lintBallCenterX - lintBalloonCenterX, 2) + Math.Pow(lintBallCenterY - lintBalloonCenterY, 2));
 
 
-            if (ldblDistance < ldblRadiuses) {
-                mblVisible = false; 
+            if (ldblDistance < ldblRadiuses)
+            {
+                mblVisible = false;
             }
+        }
+            public void Render(int i) {
 
-            
+                if (mblVisible == true) {
+                //draw balloon
+                mobjGraphics.DrawEllipse(Pens.Red, mintCoordinatesX + 0* i * cnSize, mintCoordinatesY, cnSize, cnSize);
+
+                }
+                else
+                {
+                //delete balloon
+                mobjGraphics.DrawEllipse(Pens.White, mintCoordinatesX + 0* i * cnSize, mintCoordinatesY, cnSize, cnSize);
+                }
+
+
+        
         }
     }
 }
