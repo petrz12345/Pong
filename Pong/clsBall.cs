@@ -12,7 +12,7 @@ namespace Pong
 
         public int mintCoordinatesX, mintCoordinatesY;
         int mintMoveX, mintMoveY;
-        const int cnSize = 20;
+        public const int cnSize = 20;
 
 
         //constructor

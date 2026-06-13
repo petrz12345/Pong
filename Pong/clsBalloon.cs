@@ -12,7 +12,7 @@ namespace Pong
         Graphics mobjGraphics;
 
         int mintCoordinatesX, mintCoordinatesY, mintMoveX, mintMoveY;
-        const int cnSize = 20;
+        public const int cnSize = 50;
         bool mblVisible; 
 
 
@@ -64,13 +64,13 @@ namespace Pong
 
                 if (mblVisible == true) {
                 //draw balloon
-                mobjGraphics.DrawEllipse(Pens.Red, mintCoordinatesX + 0* i * cnSize, mintCoordinatesY, cnSize, cnSize);
+                mobjGraphics.DrawEllipse(Pens.Red, mintCoordinatesX, mintCoordinatesY, cnSize, cnSize);
 
                 }
                 else
                 {
                 //delete balloon
-                mobjGraphics.DrawEllipse(Pens.White, mintCoordinatesX + 0* i * cnSize, mintCoordinatesY, cnSize, cnSize);
+                mobjGraphics.DrawEllipse(Pens.White, mintCoordinatesX, mintCoordinatesY, cnSize, cnSize);
                 }
 
 
